@@ -3,13 +3,15 @@ import { useState, Fragment } from "react";
 
 import beerPng from "../assets/beer.png";
 
+const DEFAULT_FORM_VALUES = {
+  name: "",
+  description: "",
+  tagline: "",
+  image_url: "./src/assets/beer.png",
+}
+
 const BeerForm = ({ isFormOpen, setIsFormOpen, storeMyBeer }) => {
-  const [currentBeer, setCurrentBeer] = useState({
-    name: "",
-    description: "",
-    tagline: "",
-    image_url: "./src/assets/beer.png",
-  });
+  const [currentBeer, setCurrentBeer] = useState(DEFAULT_FORM_VALUES);
 
   const saveBeer = (beer) => {
     if (
@@ -19,6 +21,7 @@ const BeerForm = ({ isFormOpen, setIsFormOpen, storeMyBeer }) => {
     )
       return;
     storeMyBeer(beer);
+    setCurrentBeer(DEFAULT_FORM_VALUES)
   };
 
   return (
